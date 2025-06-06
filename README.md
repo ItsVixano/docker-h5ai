@@ -1,11 +1,13 @@
 # docker-h5ai
 
 ![](https://img.shields.io/badge/multiarch-amd64(x86__64)%2C%20arm64%2C%20armv7%2C%20armv6-lightgrey?style=flat-square)
-![](https://img.shields.io/github/actions/workflow/status/awesometic/docker-h5ai/buildx.yml?branch=master?style=flat-square)
+![](https://img.shields.io/github/actions/workflow/status/ItsVixano/docker-h5ai/buildx.yml?branch=master?style=flat-square)
 
-![](https://img.shields.io/docker/image-size/awesometic/h5ai/latest?style=flat-square)
-![](https://img.shields.io/docker/pulls/awesometic/h5ai?style=flat-square)
-![](https://img.shields.io/docker/stars/awesometic/h5ai?style=flat-square)
+![](https://img.shields.io/docker/image-size/itsvixanowastaken/h5ai/latest?style=flat-square)
+![](https://img.shields.io/docker/pulls/itsvixanowastaken/h5ai?style=flat-square)
+![](https://img.shields.io/docker/stars/itsvixanowastaken/h5ai?style=flat-square)
+
+Fork of awesometic docker image with [Catppuccin Mocha](https://catppuccin.com/) theme applied.
 
 ## What is h5ai
 
@@ -60,7 +62,7 @@ First of all, it assumes that you have installed Docker on your system.
 Pull the image from docker hub with the following command.
 
 ```bash
-docker pull awesometic/h5ai
+docker pull itsvixanowastaken/h5ai
 ```
 
 ### Basic usage
@@ -77,7 +79,7 @@ docker run -it --rm \
 -e PUID=$UID \
 -e PGID=$GID \
 -e TZ=Asia/Seoul \
-awesometic/h5ai
+aitsvixanowastaken/h5ai
 ```
 
 The `--rm` option in the command is added to remove the executed container since this is an example usage.
@@ -101,7 +103,7 @@ docker run -d --name=h5ai \
 -e PUID=$UID \
 -e PGID=$GID \
 -e TZ=Asia/Seoul \
-awesometic/h5ai
+itsvixanowastaken/h5ai
 ```
 
 If you want to run this image permanently, so to speak, to keep it runs after rebooting the server, you can use `--restart unless-stopped` option. See the following command.
@@ -115,7 +117,7 @@ docker run -d --name=h5ai \
 -e PGID=$GID \
 -e TZ=Asia/Seoul \
 --restart unless-stopped \
-awesometic/h5ai
+itsvixanowastaken/h5ai
 ```
 
 ### Keep in safe from anonymous
@@ -131,11 +133,11 @@ docker run -it --name=h5ai \
 -e PGID=$GID \
 -e TZ=Asia/Seoul \
 -e HTPASSWD=true \
--e HTPASSWD_USER=awesometic \
-awesometic/h5ai
+-e HTPASSWD_USER=ItsVixano \
+itsvixanowastaken/h5ai
 ```
 
-Then only the user set by `HTPASSWD_USER`, **awesometic** can access this h5ai website with these options.
+Then only the user set by `HTPASSWD_USER`, **ItsVixano** can access this h5ai website with these options.
 
 Be aware of that the `HTPASSWD` environment variable must be **true** for authentication.
 
@@ -156,10 +158,10 @@ docker run -d --name=h5ai \
 -e PGID=$GID \
 -e TZ=Asia/Seoul \
 -e HTPASSWD=true \
--e HTPASSWD_USER=awesometic \
--e HTPASSWD_PW=awesometic \
+-e HTPASSWD_USER=ItsVixano \
+-e HTPASSWD_PW=ItsVixano \
 --restart unless-stopped \
-awesometic/h5ai
+itsvixanowastaken/h5ai
 ```
 
 ### Visit your website
@@ -182,7 +184,7 @@ So it is **highly recommended to make back up files of your edits** before updat
 To prevent an unexpected accident, I put minimal protection into my `init.sh` script. This checks if the current `private/conf/options.json` file is outdated from the current about to be run. If the current `options.json` is older than the newly loaded one, the script makes its backup file under the `/config` directory. See the followings.
 
 ```bash
-awesometic@awesometic-nas:docker/h5ai $ ll
+ItsVixano@ItsVixano-nas:docker/h5ai $ ll
 total 32K
 -rwxr-xr-x 1 root root  12K Jul 10  2019 20190710_165345_options.json.bak
 -rwxr-xr-x 1 root root  12K Feb  3 14:46 20210203_144624_options.json.bak
