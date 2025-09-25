@@ -1,15 +1,15 @@
 FROM nginx:1.29-alpine3.22
 LABEL maintainer="Deokgyu Yang <secugyu@gmail.com>" \
-      description="Lightweight h5ai 0.30.0 container with Nginx 1.29 & PHP 8.3 based on Alpine Linux."
+      description="Lightweight h5ai 0.30.0 container with Nginx 1.29 & PHP 8.4 based on Alpine Linux."
 
 RUN apk update
 RUN apk add --no-cache \
     bash bash-completion supervisor tzdata shadow \
-    php83 php83-fpm php83-session php83-json php83-xml php83-mbstring php83-exif \
-    php83-intl php83-gd php83-zip php83-opcache ffmpeg \
+    php84 php84-fpm php84-session php84-json php84-xml php84-mbstring php84-exif \
+    php84-intl php84-gd php84-zip php84-opcache ffmpeg \
     imagemagick zip apache2-utils patch
 RUN apk add --repository=https://dl-cdn.alpinelinux.org/alpine/edge/community \
-    php83-pecl-imagick
+    php84-pecl-imagick
 
 # Environments
 ENV PUID=911
@@ -21,9 +21,9 @@ ENV HTPASSWD_PW=''
 
 # Copy configuration files
 COPY config/h5ai.conf /etc/nginx/conf.d/h5ai.conf
-COPY config/php_set_timezone.ini /etc/php83/conf.d/00_timezone.ini
-COPY config/php_set_jit.ini /etc/php83/conf.d/00_jit.ini
-COPY config/php_set_memory_limit.ini /etc/php83/conf.d/00_memlimit.ini
+COPY config/php_set_timezone.ini /etc/php84/conf.d/00_timezone.ini
+COPY config/php_set_jit.ini /etc/php84/conf.d/00_jit.ini
+COPY config/php_set_memory_limit.ini /etc/php84/conf.d/00_memlimit.ini
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Copy h5ai
