@@ -29,7 +29,7 @@ So this is composed of,
 
 * Alpine Linux 3.19
 * Nginx 1.27.0
-* PHP 8.2.20
+* PHP 8.5
 
 with,
 
